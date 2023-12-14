@@ -4,3 +4,11 @@ filas por 5 columnas. El programa mostrará las sumas parciales de filas y colum
 se tratará. La suma total debe aparecer en la esquina inferior derecha.
 """
 
+import random as ran
+
+list = []
+
+for n in range(20):
+    list.append(ran.randint(100, 999))
+
+print(list)
