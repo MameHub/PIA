@@ -9,7 +9,4 @@ list = []
 for i in range(5):
     list.append(int(input("Introduzca un número: ")))
 
-
-
-for i in range(len(list)):
-    print(list[i])
+print(list)
