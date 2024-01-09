@@ -6,12 +6,11 @@ los números impares a las celdas restantes. Utiliza arrays auxiliares si es nec
 
 import numpy as np
 
-arr = np.array([])
+arr = np.array([np.random.randint(0, 101, 20)])
 number = np.array([])
 pairs = np.array([])
 odd = np.array([])
 
-arr = np.random.randint(0, 101, 20)
 print(arr)
 
 for n in arr:
