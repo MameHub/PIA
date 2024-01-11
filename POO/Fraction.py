@@ -12,3 +12,19 @@ Crea una clase, y pruébala, que modele fracciones. Debe permitir:
         · Ojo!!! esto se puede hacer 1 < 1/2
 """
 
+
+class Fraction:
+    def __init__(self, numerator: int, denominator: int):
+        if denominator == 0:
+            raise ZeroDivisionError("No se puede realizar una división entre 0")
+        self._numerator = numerator
+        self._denominator = denominator
+
+    @property
+    def numerador(self):
+        return self._numerador
+
+    @numerator.setter
+    def numerator(self, value):
+        self._numerator = value
+
