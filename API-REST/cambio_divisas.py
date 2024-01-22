@@ -1,23 +1,14 @@
-import requests
+import requests as rq
+import json as js
 
-API_KEY = "ca0d56370e78ee22cd687def"
-coin_source = ""
-coin_target = ""
-quantity = ""
-url = f"https://v6.exchangerate-api.com/v6/{API_KEY}/pair/{coin_source}/{coin_target}/{quantity}"
+def mostrar_divisas():
+    url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/latest/EUR"
+    dic_divisas = js.loads(url)
 
-coin_source = input("Introduzca la divisa origen: ")
-coin_target = input("Introduzca la divisa objetivo: ")
-quantity = input("Introduzca la cantidad a convertir: ")
-
-
-payload = {}
+url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/latest/EUR"
 headers = {}
-
-response = requests.request("GET", url, headers=headers, data=payload)
-
+payload = {}
+response = rq.request('GET', url, headers=headers, data=payload)
+dicc_div = {response.text}
 print(response.text)
-
-def main():
-    print("Aplicación para el cambio de divisas")
-    print("Divisas:\n")
+print(dicc_div)
