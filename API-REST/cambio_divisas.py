@@ -6,6 +6,7 @@ def mostrar_divisas():
     dic_divisas = js.loads(url)
 
 url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/latest/EUR"
+url_codigos = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/codes"
 headers = {}
 payload = {}
 response = rq.request('GET', url, headers=headers, data=payload)
