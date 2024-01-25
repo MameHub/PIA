@@ -25,6 +25,26 @@ class Stack:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.__values})"
     
-    # Creamos el método "push()" para insertar datos en la pila.
+    # Creámos el método "push()" para insertar datos en la pila.
     def push(self, value: int):
         self.__values.insert(0, value)
+
+    # Creámos el método "pop()" para eliminar datos en la pila.
+    def pop(self):
+        return self.__values.pop(0)
+    
+    # 
+    def top(self):
+        return self.__values[0]
+    
+    # Creámos el método para obtener el tamaño de la pila.
+    def size(self):
+        return len(self.__values)
+    
+    # Creámos el método para saber si la pila esta vacía.
+    def is_empty(self):
+        return self.size() == 0
+    
+    # Creámos el método para vaciar la pila.
+    def clear(self):
+        self.__values.clear()
