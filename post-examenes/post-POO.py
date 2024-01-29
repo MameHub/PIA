@@ -1,4 +1,9 @@
-# Importamos el paquete typeguard de la libreria typechecked
+"""
+
+"""
+
+#  e importamos el paquete typeguard de la libreria typechecked
+from __future__ import annotations
 from typeguard import typechecked
 
 # Chequeamos en toda la clase los tipos de datos, al estar sobre la clase, se aplicará a toda esta.
@@ -33,18 +38,33 @@ class Stack:
     def pop(self):
         return self.__values.pop(0)
     
-    # 
+    # Leemos el elemento superior de la pila.
     def top(self):
         return self.__values[0]
     
+    # Lo creamos como una propiedad de la clase.
+    @property
     # Creámos el método para obtener el tamaño de la pila.
     def size(self):
         return len(self.__values)
     
     # Creámos el método para saber si la pila esta vacía.
     def is_empty(self):
-        return self.size() == 0
+        return self.size == 0
     
     # Creámos el método para vaciar la pila.
     def clear(self):
         self.__values.clear()
+
+    # Creámos el método para sumar dos pilas.
+    def __add__(self, other: Stack):
+        if self.size + other.size > Stack.default_max_size:
+            raise MemoryError("No se puede hacer la suma porque se supera el máximo tamaño permitido")
+        new_Stack = Stack()
+        new_Stack.__values = other.__values + self.__values
+        return new_Stack
+    
+    # Creámos el método que nos permite crear una pila nueva a partir de otra eliminando un elemento de la anterior.
+    def __sub__(self, other:int):
+        new_Stack = Stack()
+        new_Stack.__values = [n for n in self.__values if n != other]
