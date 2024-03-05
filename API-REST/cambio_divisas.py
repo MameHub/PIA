@@ -1,15 +1,42 @@
+"""
+author: Álvaro Cañas
+
+Enunciado:
+Queremos hacer una aplicación que sea capaz de convertir una cantidad de dinero en una moneda a otra moneda,
+para ello haremos uso de la API descrita aquí: https://www.exchangerate-api.com/
+
+Al usuario/a le pediremos:
+
+· La moneda desde la que queremos la conversión.
+· La moneda a la que queremos convertir.
+· La cantidad de dinero que tenemos.
+
+A tener en cuenta:
+
+· Si la consulta da un error hay que indicarlo.
+· Al usuario se le mostrarán las diferentes unidades de moneda antes de pedir los datos, estas se pueden obtener
+mediante consulta en esta misma API: https://www.exchangerate-api.com/docs/supported-codes-endpoint.
+"""
+
+# Importamos la librería requests para realizar las peticiones a la API.
 import requests as rq
-import json as js
 
-def mostrar_divisas():
-    url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/latest/EUR"
-    dic_divisas = js.loads(url)
+# Método para obtener todas las divisas disponibles mediante la API.
+def divisas():
+    url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/codes"
+    response = rq.get(url)
+    text = response.text
+    lines = text.split(",")
+    for line in lines:
+        print(line)
+    
 
-url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/latest/EUR"
-url_codigos = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/codes"
-headers = {}
-payload = {}
-response = rq.request('GET', url, headers=headers, data=payload)
-dicc_div = {response.text}
-print(response.text)
-print(dicc_div)
+# Método para mostrar las opciones del programa.
+def menu():
+    print("#"*120)
+    print("Bienvenido al conversor de divisas.")
+    print("A continuación se mostrarán las divisas y su abreviatura, deberá de introducir esta última para indicar el cambio.")
+    divisas()
+    print("#"*120)
+
+menu()
