@@ -18,17 +18,16 @@ A tener en cuenta:
 mediante consulta en esta misma API: https://www.exchangerate-api.com/docs/supported-codes-endpoint.
 """
 
-# Importamos la librería requests para realizar las peticiones a la API.
+# Importamos la librería requests para realizar las peticiones a la API y json para tratar los datos.
 import requests as rq
+import json as js
 
 # Método para obtener todas las divisas disponibles mediante la API.
 def currencies():
     url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/codes"
     response = rq.get(url)
-    text = response.text
-    lines = text.split(",")
-    for line in lines:
-        print(line)    
+    codes = js.loads(response.text)
+    print(codes["supported_codes"])
 
 # Método para mostrar las opciones del programa.
 def menu():
@@ -45,7 +44,8 @@ def foreing_exchange():
     amount = float(input("Introduzca la cantidad que desea cambiar: "))
     url = f"https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/pair/{currency_from}/{currency_to}/{amount}"
     response = rq.get(url)
-    print(response.text)
+    conversion = js.loads(response.text)
+    print(conversion["conversion_result"])
 
 # Llamada a los métodos.
 menu()
