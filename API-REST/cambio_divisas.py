@@ -22,21 +22,31 @@ mediante consulta en esta misma API: https://www.exchangerate-api.com/docs/suppo
 import requests as rq
 
 # Método para obtener todas las divisas disponibles mediante la API.
-def divisas():
+def currencies():
     url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/codes"
     response = rq.get(url)
     text = response.text
     lines = text.split(",")
     for line in lines:
-        print(line)
-    
+        print(line)    
 
 # Método para mostrar las opciones del programa.
 def menu():
     print("#"*120)
     print("Bienvenido al conversor de divisas.")
     print("A continuación se mostrarán las divisas y su abreviatura, deberá de introducir esta última para indicar el cambio.")
-    divisas()
+    currencies()
     print("#"*120)
 
+# Método para obtener el cambio de divisas.
+def foreing_exchange():
+    currency_from = input("Introduzca la divisa que desea cambiar: ").upper()
+    currency_to = input("Introduzca a que divisa desea cambiar: ").upper()
+    amount = float(input("Introduzca la cantidad que desea cambiar: "))
+    url = f"https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/pair/{currency_from}/{currency_to}/{amount}"
+    response = rq.get(url)
+    print(response.text)
+
+# Llamada a los métodos.
 menu()
+foreing_exchange()
