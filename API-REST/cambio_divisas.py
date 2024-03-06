@@ -26,14 +26,15 @@ import json as js
 def currencies():
     url = "https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/codes"
     response = rq.get(url)
-    codes = js.loads(response.text)
-    print(codes["supported_codes"])
+    codes = js.loads(response.text)["supported_codes"]
+    for code in codes:
+        print(code)
 
 # Método para mostrar las opciones del programa.
 def menu():
     print("#"*120)
     print("Bienvenido al conversor de divisas.")
-    print("A continuación se mostrarán las divisas y su abreviatura, deberá de introducir esta última para indicar el cambio.")
+    print("A continuación se mostrarán las divisas y su código, deberá de introducir esta última para indicar el cambio.")
     currencies()
     print("#"*120)
 
@@ -44,8 +45,8 @@ def foreing_exchange():
     amount = float(input("Introduzca la cantidad que desea cambiar: "))
     url = f"https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/pair/{currency_from}/{currency_to}/{amount}"
     response = rq.get(url)
-    conversion = js.loads(response.text)
-    print(conversion["conversion_result"])
+    conversion = js.loads(response.text)["conversion_result"]
+    print(f"{conversion} {currency_to}")
 
 # Llamada a los métodos.
 menu()
