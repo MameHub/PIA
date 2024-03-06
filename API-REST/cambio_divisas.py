@@ -46,7 +46,7 @@ def foreing_exchange():
     url = f"https://v6.exchangerate-api.com/v6/ca0d56370e78ee22cd687def/pair/{currency_from}/{currency_to}/{amount}"
     response = rq.get(url)
     conversion = js.loads(response.text)["conversion_result"]
-    print(f"{conversion} {currency_to}")
+    print(f"{conversion:.2f} {currency_to}")
 
 # Llamada a los métodos.
 menu()
