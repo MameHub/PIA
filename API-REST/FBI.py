@@ -1,6 +1,5 @@
 """
 author: Álvaro Cañas
-date: 2024-03-06
 
 El FBI tiene un recorte de personal informático y solicitan nuestra ayuda, quieren saber cuantos fugitivos
 tienen registrados en cada una de sus oficinas, para ello han habilitado una API a la que puedes acceder
