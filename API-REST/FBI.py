@@ -6,7 +6,7 @@ El FBI tiene un recorte de personal informático y solicitan nuestra ayuda, quie
 tienen registrados en cada una de sus oficinas, para ello han habilitado una API a la que puedes acceder
 desde aqui: https://www.fbi.gov/wanted/api
 
-El progrema debe mostrar el nombre de cada oficina (ordenado) y la cantidad de fugitivos registrados.
+El programa debe mostrar el nombre de cada oficina (ordenado) y la cantidad de fugitivos registrados.
 También debe mostrar la cantidad de fugitivos no registrados en ninguna oficina.
 
 Ten en cuenta que cada consulta muestra un número limitado de registros, vas a tener que hacer consultas
