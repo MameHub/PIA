@@ -11,17 +11,28 @@ Crea una clase que modele un dado (Dice) de manera que:
     · Puedo usar los operadores == y != para comparar dos dados.
 '''
 
+# Creamos la clase Dice, esta no tendrá permitido introducir un número de caras que no sea igual a 6.
 class Dice:
-    def __init__(self, *faces):
-        if len(faces) != 6:
+    def __init__(self, *side):
+        if len(side) != 6:
             raise ValueError('El dado debe tener al menos dos caras')
-        self.faces = faces
+        self.side = side
 
+    # Propiedad para obtener las caras del dado.
     @property
     def sides(self):
-        return self.faces
+        return self.side
     
+    # Método para tirar el dado y obtener un valor de cualquiera de sus caras.
     def roll(self):
         import random as rd
-        self.side = rd.choice(self.faces)
+        self.side = rd.choice(self.side)
         return self.side
+    
+
+# Creamos un dado con los valores de las caras.
+dice1 = Dice(7, 8, 9, 10, 11, 12)
+# Mostramos las caras del dado.
+print(dice1.sides)
+# Tiramos el dado e imprimimos el resultado por pantalla.
+print(dice1.roll())
