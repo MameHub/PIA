@@ -29,6 +29,14 @@ class Dice:
         self.side = rd.choice(self.side)
         return self.side
     
+    # Método mágico __str__().
+    def __str__(self):
+        return f'El dado tiene las siguientes caras: {self.side}'
+    
+    # Método mágico __repr__().
+    def __repr__(self):
+        return f'Dice({self.side})'
+    
 
 # Creamos un dado con los valores de las caras.
 dice1 = Dice(7, 8, 9, 10, 11, 12)
