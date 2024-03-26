@@ -4,3 +4,7 @@ parchís tiene seis caras que van del 1 al 6 (valores enteros). En esta clase:
     · Tendremos la posibilidad de comparar dados entre sí con los operadores relacionados <, <=, > y >=.
 '''
 
+import ej_1 as Dice
+
+class LudoDice(Dice):
+    
