@@ -37,10 +37,24 @@ class Dice:
     def __repr__(self):
         return f'Dice({self.side})'
     
+    # Método de comparacións.
+    # Metodo mágico __eq__().
+    def __eq__(self, other):
+        return self.side == other.side
+    
+    # Método mágico __ne__().
+    def __ne__(self, other):
+        return self.side != other.side
 
-# Creamos un dado con los valores de las caras.
-dice1 = Dice(7, 8, 9, 10, 11, 12)
-# Mostramos las caras del dado.
-print(dice1.sides)
-# Tiramos el dado e imprimimos el resultado por pantalla.
-print(dice1.roll())
+# Creamos dos dados con los valores de las caras.
+dice1 = Dice(1, 2, 3, 4, 5, 6)
+dice2 = Dice(1, 2, 3, 4, 5, 6)
+# Mostramos las caras de los dados.
+print(f"Dado 1: {dice1.sides}")
+print(f"Dado 2: {dice2.sides}")
+# Tiramos los dados e imprimimos los resultados por pantalla.
+print(f"Dado 1: {dice1.roll()}")
+print(f"Dado 2: {dice2.roll()}")
+# Comparación de dados.
+print(dice1 == dice2)
+print(dice1 != dice2)
