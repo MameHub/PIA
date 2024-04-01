@@ -16,8 +16,6 @@ import random as rd
 
 class Dice:
     def __init__(self, *side):
-        if len(side) != 6:
-            raise ValueError('El dado debe tener seis caras')
         self.side = side
 
     @property
@@ -29,7 +27,7 @@ class Dice:
         return self.side
     
     def __str__(self):
-        return f'El dado tiene las siguientes caras: {self.side}'
+        return f'El dado tiene la siguiente cara: {self.side}'
     
     def __repr__(self):
         return f'Dice({self.side})'
@@ -109,7 +107,8 @@ class TrickedLudoDice(LudoDice):
 
     def put(self, value):
         if self.rolls >= 3:
-            super().put(value)
+            self.current_value = value
+            self.current_score = self.scores[value]
         else:
             raise ValueError ("Para trucar el dado debes de tirarlo antes 3 veces como mínimo.")
 
@@ -162,58 +161,66 @@ dado).
 #     def score(self):
 #         return self.score
 
-# Pruebas
-print("Ejercicio 1")
-# Creamos dos dados con los valores de las caras.
-dice1 = Dice(1, 2, 3, 4, 5, 6)
-dice2 = Dice(1, 2, 3, 4, 5, 6)
-# Mostramos las caras de los dados.
-print(f"Dado 1: {dice1.sides}")
-print(f"Dado 2: {dice2.sides}")
-# Tiramos los dados e imprimimos los resultados por pantalla.
-print(f"Dado 1: {dice1.roll()}")
-print(f"Dado 2: {dice2.roll()}")
-# Comparación de dados.
-print("Los dados son iguales:", dice1 == dice2)
-print("Los dados son diferentes:", dice1 != dice2)
-print()
+# # Pruebas
+# print("Ejercicio 1")
+# # Creamos dos dados con los valores de las caras.
+# dice1 = Dice(1, 2, 3, 4, 5, 6)
+# dice2 = Dice(1, 2, 3, 4, 5, 6)
+# # Mostramos las caras de los dados.
+# print(f"Dado 1: {dice1.sides}")
+# print(f"Dado 2: {dice2.sides}")
+# # Tiramos los dados e imprimimos los resultados por pantalla.
+# dice1.roll()
+# print(f"Dado 1: {str(dice1)}")
+# dice2.roll()
+# print(f"Dado 2: {repr(dice2)}")
+# # Comparación de dados.
+# print("Los dados son iguales:", dice1 == dice2)
+# print("Los dados son diferentes:", dice1 != dice2)
+# print()
 
-print("Ejercicio 2")
-# Creamos el dado de poker.
-poker_Dice1 = PokerDice()
-# Realizamos una tirada del dado.
-poker_Dice1.roll()
-# Mostramos la puntuación obtenida.
-print(f"Puntuación dado de póker: {poker_Dice1.score}")
-print()
+# print("Ejercicio 2")
+# # Creamos el dado de poker.
+# poker_Dice1 = PokerDice()
+# # Realizamos una tirada del dado.
+# poker_Dice1.roll()
+# # Mostramos la puntuación obtenida.
+# print(f"Valor del dado de póker: {poker_Dice1.value}")
+# print(f"Puntuación del dado de póker: {poker_Dice1.score}")
+# print()
 
-print("Ejercicio 3")
-# Creamos los dados de parchís.
-ludo_Dice1 = LudoDice()
-ludo_Dice2 = LudoDice()
-# Realizamos las tiradas.
-print(f"Dado parchís 1: {ludo_Dice1.roll()}")
-print(f"Dado parchís 2: {ludo_Dice2.roll()}")
-# Realizamos las comparaciones.
-print(ludo_Dice1 > ludo_Dice2)
-print(ludo_Dice1 < ludo_Dice2)
-print(ludo_Dice1 >= ludo_Dice2)
-print(ludo_Dice1 <= ludo_Dice2)
-print()
+# print("Ejercicio 3")
+# # Creamos los dados de parchís.
+# ludo_Dice1 = LudoDice()
+# ludo_Dice2 = LudoDice()
+# # Realizamos las tiradas.
+# print(f"Dado parchís 1: {ludo_Dice1.roll()}")
+# print(f"Dado parchís 2: {ludo_Dice2.roll()}")
+# # Realizamos las comparaciones.
+# print(f"{ludo_Dice1.sides} > {ludo_Dice2.sides}: {ludo_Dice1 > ludo_Dice2}")
+# print(f"{ludo_Dice1.sides} < {ludo_Dice2.sides}: {ludo_Dice1 < ludo_Dice2}")
+# print(f"{ludo_Dice1.sides} >= {ludo_Dice2.sides}: {ludo_Dice1 >= ludo_Dice2}")
+# print(f"{ludo_Dice1.sides} <= {ludo_Dice2.sides}: {ludo_Dice1 <= ludo_Dice2}")
+# print()
 
 print("Ejercicio 4")
 # Creamos el dado de trucado.
 TrickedLudoDice1 = TrickedLudoDice()
 # Realizamos las tiradas.
-print(f"Dado trucado 1: {TrickedLudoDice1.roll()}")
+# for i in range(3):
+#     TrickedLudoDice1.roll()
+#     print(f"Tirada {i+1}: {TrickedLudoDice1.sides}")
+TrickedLudoDice1.roll()
+print(TrickedLudoDice1)
+# TrickedLudoDice1.put(3)
 # Mostramos el dado.
-print(TrickedLudoDice1)
-# Trucamos el dado y mostramos el resultado.
-for _ in range(3):
-    TrickedLudoDice1.roll()
-TrickedLudoDice1.put(3)
-print(TrickedLudoDice1)
-print()
+# print(TrickedLudoDice1)
+# # Trucamos el dado y mostramos el resultado.
+# for _ in range(3):
+#     TrickedLudoDice1.roll()
+# TrickedLudoDice1.put(3)
+# print(TrickedLudoDice1.value)
+# print()
 
-print("Ejercicio 5")
-# 
+# print("Ejercicio 5")
+# # Creamos el cubilete de dados.
