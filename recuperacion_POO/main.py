@@ -5,8 +5,8 @@
         · dice1 = Dice(1, 2, 3, 4, 5, 6)
         · dice2 = Dice('A', 'K', 'Q', 'J', `R`, 'N')
     · Los valores de las caras los obtendremos mediante una propiedad (sides).
-    · Dispondremos de un método para tirar el dado (roll) que devolverá el resultado (uno de los valores anteriores),
-    además actualizará una variable de instancia privada (side)
+    · Dispondremos de un método para tirar el dado (roll) que devolverá el resultado (uno de los valores anteriores), además actualizará una variable
+    de instancia privada (side)
     que podrá consultarse mediante una propiedad.
     · Los métodos mágicos __str__() y __repr__() deben de estar cerrados.
     · Puedo usar los operadores == y != para comparar dos dados.
@@ -66,8 +66,8 @@ class PokerDice:
         return self.current_score
 
 '''
-3. Crea una clase que modele un dado de parchís (LudoDice) que derive de la clase del apartado 1. Un dado de parchís tiene seis caras que
-van del 1 al 6 (valores enteros). En esta clase:
+3. Crea una clase que modele un dado de parchís (LudoDice) que derive de la clase del apartado 1. Un dado de parchís tiene seis caras que van del 1 al 6
+(valores enteros). En esta clase:
     · Tendremos la posibilidad de comparar dados entre sí con los operadores relacionados <, <=, > y >=.
 '''
 
@@ -88,12 +88,12 @@ class LudoDice(Dice):
         return "El dado 1 es menor o igual que el dado 2", self.side <= other.side
 
 '''
-4. Crea una clase que modele un dado de parchís trucado (TrickedLudoDice) que derive de la clase anterior y que de cuando en cuando nos
-permita poner el valor que queramos en la cara del dado (entre 1 y 6), de manera que:
-    · No puedo usar el método que pone el valor que queramos en la cara del dado (put) si no he tirado al menos tres veces de forma
-    normal, si lo llamo sin haberse cumplido esta excepción lanzaremos una excepción.
-    · Ten en cuenta que NO PUEDES cambiar directamente el valor de la cara de un dado ya que se almacena en una variable de instancia
-    privada de una clase de la que heredas (Dice) y no tienes acceso.
+4. Crea una clase que modele un dado de parchís trucado (TrickedLudoDice) que derive de la clase anterior y que de cuando en cuando nos permita poner el valor
+que queramos en la cara del dado (entre 1 y 6), de manera que:
+    · No puedo usar el método que pone el valor que queramos en la cara del dado (put) si no he tirado al menos tres veces de forma normal, si lo llamo sin
+    haberse cumplido esta excepción lanzaremos una excepción.
+    · Ten en cuenta que NO PUEDES cambiar directamente el valor de la cara de un dado ya que se almacena en una variable de instancia privada de una clase de
+    la que heredas (Dice) y no tienes acceso.
 '''
 
 class TrickedLudoDice(LudoDice):
@@ -125,11 +125,11 @@ class TrickedLudoDice(LudoDice):
 # 
 class DiceCup:
     def __init__(self, *LudoDices):
-        self.LudoDices = LudoDices
+        self.LudoDices = list(LudoDices)
 
     # 
     def dices(self):
-        return self.LudoDice
+        return len(self.LudoDice)
     
     # 
     # def size(self):
@@ -149,8 +149,7 @@ class DiceCup:
 
 '''
 6. Crea una clase que modele un cubilete de dados de póker (PokerDiceCup) que derive de la clase anterior de manera que tenga una
-propiedad (score) que devuelva la puntuación total del cubilete (la suma de la de cada
-dado).
+propiedad (score) que devuelva la puntuación total del cubilete (la suma de la de cada dado).
 '''
 
 # class PokerDiceCup(DiceCup):
@@ -232,6 +231,7 @@ print(f"Dado parchís 3: {Ludo_Dice2.roll()}")
 print(f"Dado parchís 3: {Ludo_Dice3.roll()}")
 # Creamos el cubilete de dados.
 DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
+print(DiceCup1)
 # Mostramos los dados que tenemos en el cubilete.
 print(DiceCup1.dices)
 print()
