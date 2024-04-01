@@ -1,5 +1,5 @@
 '''
-Crea una clase que modele un dado (Dice) de manera que:
+1. Crea una clase que modele un dado (Dice) de manera que:
 
     · El constructor recibe los valores de las caras que tiene el dado. Ejemplo:
         · dice1 = Dice(1, 2, 3, 4, 5, 6)
@@ -49,7 +49,7 @@ class Dice:
         return self.side != other.side
 
 '''
-Crea una clase que modele un dado de póker (PokerDice) de manera que:
+2. Crea una clase que modele un dado de póker (PokerDice) de manera que:
 
     · Los posibles valores del dado son 'A', 'K', 'Q', 'J', 'R' y 'N'.
     · El dado tiene una propiedad (score) que nos da la puntuación del dado (6, 5, 4, 3, 2, 1).
@@ -79,32 +79,29 @@ class PokerDice:
         return self.current_score
 
 '''
-Crea una clase que modele un dado de parchís (LudoDice) que derive de la clase del apartado 1. Un dado de parchís tiene seis caras que
+3. Crea una clase que modele un dado de parchís (LudoDice) que derive de la clase del apartado 1. Un dado de parchís tiene seis caras que
 van del 1 al 6 (valores enteros). En esta clase:
     · Tendremos la posibilidad de comparar dados entre sí con los operadores relacionados <, <=, > y >=.
 '''
 
 class LudoDice(Dice):
-    def __init__(self, *side):
-        super().__init__(*side)
-        if len(side) != 6 and side(int):
-            raise ValueError ("Los valores del dado no son correctos, deben de ser 6 números enteros.")
-        self.side = side
+    def __init__(self):
+        super().__init__(1, 2, 3, 4, 5, 6)
 
     def __gt__(self, other):
-        return self.side > other.side
+        return "El dado 1 es mayor que el dado 2", self.side > other.side
     
     def __lt__(self, other):
-        return self.side < other.side
+        return "El dado 1 es menor que el dado 2", self.side < other.side
     
     def __ge__(self, other):
-        return self.side >= other.side
+        return "El dado 1 es mayor o igual que el dado 2", self.side >= other.side
     
     def __le__(self, other):
-        return self.side <= other.side
+        return "El dado 1 es menor o igual que el dado 2", self.side <= other.side
 
 '''
-Crea una clase que modele un dado de parchís trucado (TrickedLudoDice) que derive de la clase anterior y que de cuando en cuando nos
+4. Crea una clase que modele un dado de parchís trucado (TrickedLudoDice) que derive de la clase anterior y que de cuando en cuando nos
 permita poner el valor que queramos en la cara del dado (entre 1 y 6), de manera que:
     · No puedo usar el método que pone el valor que queramos en la cara del dado (put) si no he tirado al menos tres veces de forma
     normal, si lo llamo sin haberse cumplido esta excepción lanzaremos una
@@ -119,7 +116,7 @@ permita poner el valor que queramos en la cara del dado (entre 1 y 6), de manera
         
 
 '''
-Crea una clase que modele un cubilete de dados (DiceCup) de manera que:
+5. Crea una clase que modele un cubilete de dados (DiceCup) de manera que:
     · Al construirla le paso una serie de dados. Ejemplos:
         · cup = DiceCup(LudoDace(), LudoDace(), LudoDace())
     · Dispondremos de una propiedad que devuelva los dados (dices) y otra que devuelva el número de dados que contiene (size).
@@ -154,7 +151,7 @@ Crea una clase que modele un cubilete de dados (DiceCup) de manera que:
 #         return f"{self}"
 
 '''
-Crea una clase que modele un cubilete de dados de póker (PokerDiceCup) que derive de la clase anterior de manera que tenga una
+6. Crea una clase que modele un cubilete de dados de póker (PokerDiceCup) que derive de la clase anterior de manera que tenga una
 propiedad (score) que devuelva la puntuación total del cubilete (la suma de la de cada
 dado).
 '''
@@ -194,8 +191,8 @@ print()
 
 print("Ejercicio 3")
 # Creamos los dados de parchís.
-ludo_Dice1 = LudoDice
-ludo_Dice2 = LudoDice
+ludo_Dice1 = LudoDice()
+ludo_Dice2 = LudoDice()
 # Realizamos las tiradas.
 print(f"Dado parchís 1: {ludo_Dice1.roll()}")
 print(f"Dado parchís 2: {ludo_Dice2.roll()}")
