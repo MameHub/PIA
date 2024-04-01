@@ -123,29 +123,29 @@ class TrickedLudoDice(LudoDice):
 '''
 
 # 
-# class DiceCup:
-#     def __init__(self, *dices):
-#         self.dices = dices
+class DiceCup:
+    def __init__(self, *LudoDices):
+        self.LudoDices = LudoDices
 
-#     # 
-#     def dices(self):
-#         return self.dices
+    # 
+    def dices(self):
+        return self.LudoDice
     
-#     # 
-#     def size(self):
-#         return self.size
+    # 
+    # def size(self):
+    #     return self.size
     
-#     # 
-#     def add(dices):
+    # # 
+    # def add(dices):
 
 
-#     # 
-#     def remove():
+    # # 
+    # def remove():
 
 
-#     # 
-#     def __str__(self):
-#         return f"{self}"
+    # # 
+    # def __str__(self):
+    #     return f"{self}"
 
 '''
 6. Crea una clase que modele un cubilete de dados de póker (PokerDiceCup) que derive de la clase anterior de manera que tenga una
@@ -190,28 +190,28 @@ dado).
 # print()
 
 # print("Ejercicio 3")
-# # Creamos los dados de parchís.
+# Creamos los dados de parchís.
 # ludo_Dice1 = LudoDice()
 # ludo_Dice2 = LudoDice()
-# # Realizamos las tiradas.
+# Realizamos las tiradas.
 # print(f"Dado parchís 1: {ludo_Dice1.roll()}")
 # print(f"Dado parchís 2: {ludo_Dice2.roll()}")
-# # Realizamos las comparaciones.
+# Realizamos las comparaciones.
 # print(f"{ludo_Dice1.sides} > {ludo_Dice2.sides}: {ludo_Dice1 > ludo_Dice2}")
 # print(f"{ludo_Dice1.sides} < {ludo_Dice2.sides}: {ludo_Dice1 < ludo_Dice2}")
 # print(f"{ludo_Dice1.sides} >= {ludo_Dice2.sides}: {ludo_Dice1 >= ludo_Dice2}")
 # print(f"{ludo_Dice1.sides} <= {ludo_Dice2.sides}: {ludo_Dice1 <= ludo_Dice2}")
 # print()
 
-print("Ejercicio 4")
+# print("Ejercicio 4")
 # Creamos el dado de trucado.
-TrickedLudoDice1 = TrickedLudoDice()
+# TrickedLudoDice1 = TrickedLudoDice()
 # Realizamos las tiradas.
 # for i in range(3):
 #     TrickedLudoDice1.roll()
 #     print(f"Tirada {i+1}: {TrickedLudoDice1.sides}")
-TrickedLudoDice1.roll()
-print(TrickedLudoDice1)
+# TrickedLudoDice1.roll()
+# print(TrickedLudoDice1)
 # TrickedLudoDice1.put(3)
 # Mostramos el dado.
 # print(TrickedLudoDice1)
@@ -222,5 +222,19 @@ print(TrickedLudoDice1)
 # print(TrickedLudoDice1.value)
 # print()
 
-# print("Ejercicio 5")
-# # Creamos el cubilete de dados.
+print("Ejercicio 5")
+# Creamos tres dados de parchís y tiramos los dados para ver que funcionan.
+Ludo_Dice1 = LudoDice()
+Ludo_Dice2 = LudoDice()
+Ludo_Dice3 = LudoDice()
+print(f"Dado parchís 3: {Ludo_Dice1.roll()}")
+print(f"Dado parchís 3: {Ludo_Dice2.roll()}")
+print(f"Dado parchís 3: {Ludo_Dice3.roll()}")
+# Creamos el cubilete de dados.
+DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
+# Mostramos los dados que tenemos en el cubilete.
+print(DiceCup1.dices)
+print()
+
+# print("Ejercicio 6")
+# Creamos 
