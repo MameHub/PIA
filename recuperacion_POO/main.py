@@ -14,37 +14,29 @@
 
 import random as rd
 
-# Creamos la clase Dice, esta no tendrá permitido introducir un número de caras que no sea igual a 6.
 class Dice:
     def __init__(self, *side):
         if len(side) != 6:
             raise ValueError('El dado debe tener seis caras')
         self.side = side
 
-    # Propiedad para obtener las caras del dado.
     @property
     def sides(self):
         return self.side
     
-    # Método para tirar el dado y obtener un valor de cualquiera de sus caras.
     def roll(self):
         self.side = rd.choice(self.side)
         return self.side
     
-    # Método mágico __str__().
     def __str__(self):
         return f'El dado tiene las siguientes caras: {self.side}'
     
-    # Método mágico __repr__().
     def __repr__(self):
         return f'Dice({self.side})'
     
-    # Método de comparacións.
-    # Metodo mágico __eq__().
     def __eq__(self, other):
         return self.side == other.side
     
-    # Método mágico __ne__().
     def __ne__(self, other):
         return self.side != other.side
 
@@ -55,7 +47,6 @@ class Dice:
     · El dado tiene una propiedad (score) que nos da la puntuación del dado (6, 5, 4, 3, 2, 1).
 '''
 
-# Creamos la clase PokerDice con la que tendremos una serie de valores asignados con la puntuación.
 class PokerDice:
     def __init__(self):
         self.values = ['A', 'K', 'Q', 'J', 'R', 'N']
@@ -63,7 +54,6 @@ class PokerDice:
         self.current_value = None
         self.current_score = None
 
-    # Obtenemos mediante propiedades de la clase los valores de la clase.
     @property
     def value(self):
         return self.current_value
@@ -72,7 +62,6 @@ class PokerDice:
     def score(self):
         return self.current_score
     
-    # Creamos una función para realizar una tirada del dado y obtener los valores para value y score.
     def roll(self):
         self.current_value = rd.choice(self.values)
         self.current_score = self.scores[self.current_value]
@@ -104,16 +93,25 @@ class LudoDice(Dice):
 4. Crea una clase que modele un dado de parchís trucado (TrickedLudoDice) que derive de la clase anterior y que de cuando en cuando nos
 permita poner el valor que queramos en la cara del dado (entre 1 y 6), de manera que:
     · No puedo usar el método que pone el valor que queramos en la cara del dado (put) si no he tirado al menos tres veces de forma
-    normal, si lo llamo sin haberse cumplido esta excepción lanzaremos una
-    excepción.
+    normal, si lo llamo sin haberse cumplido esta excepción lanzaremos una excepción.
     · Ten en cuenta que NO PUEDES cambiar directamente el valor de la cara de un dado ya que se almacena en una variable de instancia
     privada de una clase de la que heredas (Dice) y no tienes acceso.
 '''
 
-# 
-# class TrickedLudoDice(LudoDice):
-#     def __init__(self):
-        
+class TrickedLudoDice(LudoDice):
+    def __init__(self):
+        super().__init__()
+        self.rolls = 0
+    
+    def roll(self):
+        self.rolls += 1
+        super().roll()
+
+    def put(self, value):
+        if self.rolls >= 3:
+            super().put(value)
+        else:
+            raise ValueError ("Para trucar el dado debes de tirarlo antes 3 veces como mínimo.")
 
 '''
 5. Crea una clase que modele un cubilete de dados (DiceCup) de manera que:
@@ -201,3 +199,21 @@ print(ludo_Dice1 > ludo_Dice2)
 print(ludo_Dice1 < ludo_Dice2)
 print(ludo_Dice1 >= ludo_Dice2)
 print(ludo_Dice1 <= ludo_Dice2)
+print()
+
+print("Ejercicio 4")
+# Creamos el dado de trucado.
+TrickedLudoDice1 = TrickedLudoDice()
+# Realizamos las tiradas.
+print(f"Dado trucado 1: {TrickedLudoDice1.roll()}")
+# Mostramos el dado.
+print(TrickedLudoDice1)
+# Trucamos el dado y mostramos el resultado.
+for _ in range(3):
+    TrickedLudoDice1.roll()
+TrickedLudoDice1.put(3)
+print(TrickedLudoDice1)
+print()
+
+print("Ejercicio 5")
+# 
