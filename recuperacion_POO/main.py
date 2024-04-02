@@ -22,8 +22,12 @@ class Dice:
     def sides(self):
         return self.side
     
+    @sides.setter
+    def sides(self, value):
+        self._sides = value
+    
     def roll(self):
-        self.side = rd.choice(self.side)
+        self.side = rd.randint(1, 6)
         return self.side
     
     def __str__(self):
@@ -107,8 +111,7 @@ class TrickedLudoDice(LudoDice):
 
     def put(self, value):
         if self.rolls >= 3:
-            self.current_value = value
-            self.current_score = self.scores[value]
+            super().__setattr__('side', value)
         else:
             raise ValueError ("Para trucar el dado debes de tirarlo antes 3 veces como mínimo.")
 
@@ -168,7 +171,7 @@ class PokerDiceCup(DiceCup):
         # total = sum(list)
         return sum(self.dices)
     
-# # Pruebas
+# Pruebas
 # print("Ejercicio 1.")
 # # Creamos dos dados con los valores de las caras.
 # dice1 = Dice(1, 2, 3, 4, 5, 6)
@@ -197,51 +200,47 @@ class PokerDiceCup(DiceCup):
 # print()
 
 # print("Ejercicio 3.")
-# Creamos los dados de parchís.
+# # Creamos los dados de parchís.
 # ludo_Dice1 = LudoDice()
 # ludo_Dice2 = LudoDice()
-# Realizamos las tiradas.
+# # Realizamos las tiradas.
 # print(f"Dado parchís 1: {ludo_Dice1.roll()}")
 # print(f"Dado parchís 2: {ludo_Dice2.roll()}")
-# Realizamos las comparaciones.
+# # Realizamos las comparaciones.
 # print(f"{ludo_Dice1.sides} > {ludo_Dice2.sides}: {ludo_Dice1 > ludo_Dice2}")
 # print(f"{ludo_Dice1.sides} < {ludo_Dice2.sides}: {ludo_Dice1 < ludo_Dice2}")
 # print(f"{ludo_Dice1.sides} >= {ludo_Dice2.sides}: {ludo_Dice1 >= ludo_Dice2}")
 # print(f"{ludo_Dice1.sides} <= {ludo_Dice2.sides}: {ludo_Dice1 <= ludo_Dice2}")
 # print()
 
-# print("Ejercicio 4.")
+print("Ejercicio 4.")
 # Creamos el dado de trucado.
-# TrickedLudoDice1 = TrickedLudoDice()
+TrickedLudoDice1 = TrickedLudoDice()
 # Realizamos las tiradas.
-# for i in range(3):
-#     TrickedLudoDice1.roll()
-#     print(f"Tirada {i+1}: {TrickedLudoDice1.sides}")
-# TrickedLudoDice1.roll()
-# print(TrickedLudoDice1)
-# TrickedLudoDice1.put(3)
+for i in range(3):
+    TrickedLudoDice1.roll()
+    print(f"Tirada {i+1}: {TrickedLudoDice1.sides}")
+TrickedLudoDice1.roll()
+# Trucamos el dado.
+TrickedLudoDice1.put(3)
 # Mostramos el dado.
-# print(TrickedLudoDice1)
-# # Trucamos el dado y mostramos el resultado.
-# for _ in range(3):
-#     TrickedLudoDice1.roll()
-# TrickedLudoDice1.put(3)
-# print(TrickedLudoDice1.value)
-# print()
+print(TrickedLudoDice1)
+print(f"Tirada trucada: {TrickedLudoDice1.sides}")
+print()
 
 # print("Ejercicio 5.")
 # # Creamos tres dados de parchís y tiramos los dados para ver que funcionan.
-Ludo_Dice1 = LudoDice()
-Ludo_Dice2 = LudoDice()
-Ludo_Dice3 = LudoDice()
+# Ludo_Dice1 = LudoDice()
+# Ludo_Dice2 = LudoDice()
+# Ludo_Dice3 = LudoDice()
 # Ludo_Dice4 = LudoDice()
-print(f"Dado parchís 1: {Ludo_Dice1.roll()}.")
-print(f"Dado parchís 2: {Ludo_Dice2.roll()}.")
-print(f"Dado parchís 3: {Ludo_Dice3.roll()}.")
+# print(f"Dado parchís 1: {Ludo_Dice1.roll()}.")
+# print(f"Dado parchís 2: {Ludo_Dice2.roll()}.")
+# print(f"Dado parchís 3: {Ludo_Dice3.roll()}.")
 # print(f"Dado parchís 4: {Ludo_Dice4.roll()}.")
 # # Creamos el cubilete de dados.
-DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
-print(DiceCup1)
+# DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
+# print(DiceCup1)
 # # Mostramos los dados que tenemos en el cubilete.
 # print(f"En el cubilete tenemos los siguientes dados: {DiceCup1.dices}.")
 # print(f"Hay {DiceCup1.size} dados en el cubilete.")
@@ -253,8 +252,8 @@ print(DiceCup1)
 # print(DiceCup1)
 # print()
 
-print("Ejercicio 6")
-# Realizamos la suma del contenido del cubilete de dados.
-pkc = PokerDiceCup(DiceCup1)
-score = pkc.score
-print(score)
+# print("Ejercicio 6")
+# # Realizamos la suma del contenido del cubilete de dados.
+# pkc = PokerDiceCup(DiceCup1)
+# score = pkc.score
+# print(score)
