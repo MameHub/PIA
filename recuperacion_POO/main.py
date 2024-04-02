@@ -153,14 +153,21 @@ class DiceCup:
 propiedad (score) que devuelva la puntuación total del cubilete (la suma de la de cada dado).
 '''
 
-# class PokerDiceCup(DiceCup):
-#     def __init__(self, *dices):
-#         super().__init__(*dices)
+class PokerDiceCup(DiceCup):
+    def __init__(self, *dices):
+        super().__init__(*dices)
 
-#     @property
-#     def score(self):
-#         return self.score
+    @property
+    def score(self):
+        total = 0
+        for number in self.dices:
+            total += number
+        return total
 
+    # def score(self):
+    #     total = sum(list)
+    #     return total
+    
 # # Pruebas
 # print("Ejercicio 1.")
 # # Creamos dos dados con los valores de las caras.
@@ -222,8 +229,8 @@ propiedad (score) que devuelva la puntuación total del cubilete (la suma de la 
 # print(TrickedLudoDice1.value)
 # print()
 
-print("Ejercicio 5.")
-# Creamos tres dados de parchís y tiramos los dados para ver que funcionan.
+# print("Ejercicio 5.")
+# # Creamos tres dados de parchís y tiramos los dados para ver que funcionan.
 Ludo_Dice1 = LudoDice()
 Ludo_Dice2 = LudoDice()
 Ludo_Dice3 = LudoDice()
@@ -232,19 +239,21 @@ print(f"Dado parchís 1: {Ludo_Dice1.roll()}.")
 print(f"Dado parchís 2: {Ludo_Dice2.roll()}.")
 print(f"Dado parchís 3: {Ludo_Dice3.roll()}.")
 print(f"Dado parchís 4: {Ludo_Dice4.roll()}.")
-# Creamos el cubilete de dados.
+# # Creamos el cubilete de dados.
 DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
 print(DiceCup1)
-# Mostramos los dados que tenemos en el cubilete.
-print(f"En el cubilete tenemos los siguientes dados: {DiceCup1.dices}.")
-print(f"Hay {DiceCup1.size} dados en el cubilete.")
-DiceCup1.add(Ludo_Dice4)
-print(DiceCup1.dices)
-print(DiceCup1)
-DiceCup1.remove(Ludo_Dice4)
-print(DiceCup1.dices)
-print(DiceCup1)
-print()
+# # Mostramos los dados que tenemos en el cubilete.
+# print(f"En el cubilete tenemos los siguientes dados: {DiceCup1.dices}.")
+# print(f"Hay {DiceCup1.size} dados en el cubilete.")
+# DiceCup1.add(Ludo_Dice4)
+# print(DiceCup1.dices)
+# print(DiceCup1)
+# DiceCup1.remove(Ludo_Dice4)
+# print(DiceCup1.dices)
+# print(DiceCup1)
+# print()
 
-# print("Ejercicio 6")
-# Creamos 
+print("Ejercicio 6")
+# Realizamos la suma del contenido del cubilete de dados.
+PokerDiceCup(DiceCup1)
+print(PokerDiceCup.score)
