@@ -157,16 +157,16 @@ class PokerDiceCup(DiceCup):
     def __init__(self, *dices):
         super().__init__(*dices)
 
-    @property
-    def score(self):
-        total = 0
-        for number in self.dices:
-            total += number
-        return total
-
+    # @property
     # def score(self):
-    #     total = sum(list)
+    #     total = 0
+    #     for dice in len(list):
+    #         total += dice._dices
     #     return total
+
+    def score(self):
+        # total = sum(list)
+        return sum(self.dices)
     
 # # Pruebas
 # print("Ejercicio 1.")
@@ -234,11 +234,11 @@ class PokerDiceCup(DiceCup):
 Ludo_Dice1 = LudoDice()
 Ludo_Dice2 = LudoDice()
 Ludo_Dice3 = LudoDice()
-Ludo_Dice4 = LudoDice()
+# Ludo_Dice4 = LudoDice()
 print(f"Dado parchís 1: {Ludo_Dice1.roll()}.")
 print(f"Dado parchís 2: {Ludo_Dice2.roll()}.")
 print(f"Dado parchís 3: {Ludo_Dice3.roll()}.")
-print(f"Dado parchís 4: {Ludo_Dice4.roll()}.")
+# print(f"Dado parchís 4: {Ludo_Dice4.roll()}.")
 # # Creamos el cubilete de dados.
 DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
 print(DiceCup1)
@@ -255,5 +255,6 @@ print(DiceCup1)
 
 print("Ejercicio 6")
 # Realizamos la suma del contenido del cubilete de dados.
-PokerDiceCup(DiceCup1)
-print(PokerDiceCup.score)
+pkc = PokerDiceCup(DiceCup1)
+score = pkc.score
+print(score)
