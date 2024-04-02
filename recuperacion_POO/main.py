@@ -121,31 +121,33 @@ class TrickedLudoDice(LudoDice):
     · Dispondremos de un método para quitar un dado (remove) pasándole el dado concreto que queremos quitar.
     · Debes estar creado el método mágico __str__().
 '''
-
-# 
+ 
 class DiceCup:
-    def __init__(self, *LudoDices):
-        self.LudoDices = list(LudoDices)
-
-    # 
+    def __init__(self, *dices):
+        self.dices = list(dices)
+ 
     def dices(self):
-        return len(self.LudoDice)
+        return self.dices
+     
+    def size(self):
+        number_dices = 0
+        for _ in len(list):
+            number_dices += 1
+        return len(number_dices)
     
-    # 
-    # def size(self):
-    #     return self.size
-    
-    # # 
-    # def add(dices):
+    def add(self, dice):
+        self.dices.append(dice)
+        print(f"Se ha añadio un dado con valor {dice.sides}.")
 
-
-    # # 
-    # def remove():
-
-
-    # # 
-    # def __str__(self):
-    #     return f"{self}"
+    def remove(self, dice):
+        if dice in self.dices:
+            self.dices.remove(dice)
+            print(f"Se ha eliminado un dado con valor {dice.sides}.")
+        else:
+            print("El dado indicado no se encuentra en el cubilete.")
+ 
+    def __str__(self):
+        return f"Tenemos un cubilete con {self.size} dados y con los siguientes valores {self.dices}."
 
 '''
 6. Crea una clase que modele un cubilete de dados de póker (PokerDiceCup) que derive de la clase anterior de manera que tenga una
@@ -161,7 +163,7 @@ propiedad (score) que devuelva la puntuación total del cubilete (la suma de la 
 #         return self.score
 
 # # Pruebas
-# print("Ejercicio 1")
+# print("Ejercicio 1.")
 # # Creamos dos dados con los valores de las caras.
 # dice1 = Dice(1, 2, 3, 4, 5, 6)
 # dice2 = Dice(1, 2, 3, 4, 5, 6)
@@ -178,7 +180,7 @@ propiedad (score) que devuelva la puntuación total del cubilete (la suma de la 
 # print("Los dados son diferentes:", dice1 != dice2)
 # print()
 
-# print("Ejercicio 2")
+# print("Ejercicio 2.")
 # # Creamos el dado de poker.
 # poker_Dice1 = PokerDice()
 # # Realizamos una tirada del dado.
@@ -188,7 +190,7 @@ propiedad (score) que devuelva la puntuación total del cubilete (la suma de la 
 # print(f"Puntuación del dado de póker: {poker_Dice1.score}")
 # print()
 
-# print("Ejercicio 3")
+# print("Ejercicio 3.")
 # Creamos los dados de parchís.
 # ludo_Dice1 = LudoDice()
 # ludo_Dice2 = LudoDice()
@@ -202,7 +204,7 @@ propiedad (score) que devuelva la puntuación total del cubilete (la suma de la 
 # print(f"{ludo_Dice1.sides} <= {ludo_Dice2.sides}: {ludo_Dice1 <= ludo_Dice2}")
 # print()
 
-# print("Ejercicio 4")
+# print("Ejercicio 4.")
 # Creamos el dado de trucado.
 # TrickedLudoDice1 = TrickedLudoDice()
 # Realizamos las tiradas.
@@ -221,18 +223,25 @@ propiedad (score) que devuelva la puntuación total del cubilete (la suma de la 
 # print(TrickedLudoDice1.value)
 # print()
 
-print("Ejercicio 5")
+print("Ejercicio 5.")
 # Creamos tres dados de parchís y tiramos los dados para ver que funcionan.
 Ludo_Dice1 = LudoDice()
 Ludo_Dice2 = LudoDice()
 Ludo_Dice3 = LudoDice()
-print(f"Dado parchís 3: {Ludo_Dice1.roll()}")
-print(f"Dado parchís 3: {Ludo_Dice2.roll()}")
-print(f"Dado parchís 3: {Ludo_Dice3.roll()}")
+Ludo_Dice4 = LudoDice()
+print(f"Dado parchís 1: {Ludo_Dice1.roll()}.")
+print(f"Dado parchís 2: {Ludo_Dice2.roll()}.")
+print(f"Dado parchís 3: {Ludo_Dice3.roll()}.")
+print(f"Dado parchís 4: {Ludo_Dice4.roll()}.")
 # Creamos el cubilete de dados.
 DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
-print(DiceCup1)
+print(DiceCup1) # Usar el método __str__()
 # Mostramos los dados que tenemos en el cubilete.
+print(f"En el cubilete tenemos los siguientes dados: {DiceCup1.dices}.")
+print(f"Hay {DiceCup1.size} dados en el cubilete.")
+DiceCup1.add(Ludo_Dice4)
+print(DiceCup1.dices)
+DiceCup1.remove(Ludo_Dice4)
 print(DiceCup1.dices)
 print()
 
