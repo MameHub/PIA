@@ -124,30 +124,29 @@ class TrickedLudoDice(LudoDice):
  
 class DiceCup:
     def __init__(self, *dices):
-        self.dices = list(dices)
+        self._dices = list(dices)
  
+    @property
     def dices(self):
-        return self.dices
+        return self._dices
      
+    @property
     def size(self):
-        number_dices = 0
-        # for _ in self.dices:
-        #     number_dices += 1
-        return len(self.dices)
+        return len(self._dices)
     
     def add(self, dice):
-        self.dices.append(dice)
+        self._dices.append(dice)
         print(f"Se ha añadio un dado con valor {dice.sides}.")
 
     def remove(self, dice):
-        if dice in self.dices:
+        if dice in self._dices:
             self.dices.remove(dice)
             print(f"Se ha eliminado un dado con valor {dice.sides}.")
         else:
             print("El dado indicado no se encuentra en el cubilete.")
  
     def __str__(self):
-        return f"Tenemos un cubilete con {self.size()} dados y con los siguientes valores {self.dices}."
+        return f"Tenemos un cubilete con {self.size} dados y con valores {self.dices}."
 
 '''
 6. Crea una clase que modele un cubilete de dados de póker (PokerDiceCup) que derive de la clase anterior de manera que tenga una
@@ -235,14 +234,16 @@ print(f"Dado parchís 3: {Ludo_Dice3.roll()}.")
 print(f"Dado parchís 4: {Ludo_Dice4.roll()}.")
 # Creamos el cubilete de dados.
 DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
-print(DiceCup1) # Usar el método __str__()
+print(DiceCup1)
 # Mostramos los dados que tenemos en el cubilete.
 print(f"En el cubilete tenemos los siguientes dados: {DiceCup1.dices}.")
-print(f"Hay {DiceCup1.size()} dados en el cubilete.")
+print(f"Hay {DiceCup1.size} dados en el cubilete.")
 DiceCup1.add(Ludo_Dice4)
 print(DiceCup1.dices)
+print(DiceCup1)
 DiceCup1.remove(Ludo_Dice4)
 print(DiceCup1.dices)
+print(DiceCup1)
 print()
 
 # print("Ejercicio 6")
