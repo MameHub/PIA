@@ -159,17 +159,13 @@ propiedad (score) que devuelva la puntuación total del cubilete (la suma de la 
 class PokerDiceCup(DiceCup):
     def __init__(self, *dices):
         super().__init__(*dices)
-
-    # @property
-    # def score(self):
-    #     total = 0
-    #     for dice in len(list):
-    #         total += dice._dices
-    #     return total
-
+    
+    @property
     def score(self):
-        # total = sum(list)
-        return sum(self.dices)
+        total = 0
+        for i in self.dices:
+            total += sum(i)
+        return total
     
 # Pruebas
 # print("Ejercicio 1.")
@@ -213,35 +209,35 @@ class PokerDiceCup(DiceCup):
 # print(f"{ludo_Dice1.sides} <= {ludo_Dice2.sides}: {ludo_Dice1 <= ludo_Dice2}")
 # print()
 
-print("Ejercicio 4.")
-# Creamos el dado de trucado.
-TrickedLudoDice1 = TrickedLudoDice()
-# Realizamos las tiradas.
-for i in range(3):
-    TrickedLudoDice1.roll()
-    print(f"Tirada {i+1}: {TrickedLudoDice1.sides}")
-TrickedLudoDice1.roll()
-# Trucamos el dado.
-TrickedLudoDice1.put(3)
-# Mostramos el dado.
-print(TrickedLudoDice1)
-print(f"Tirada trucada: {TrickedLudoDice1.sides}")
-print()
+# print("Ejercicio 4.")
+# # Creamos el dado de trucado.
+# TrickedLudoDice1 = TrickedLudoDice()
+# # Realizamos las tiradas.
+# for i in range(3):
+#     TrickedLudoDice1.roll()
+#     print(f"Tirada {i+1}: {TrickedLudoDice1.sides}")
+# TrickedLudoDice1.roll()
+# # Trucamos el dado.
+# TrickedLudoDice1.put(3)
+# # Mostramos el dado.
+# print(TrickedLudoDice1)
+# print(f"Tirada trucada: {TrickedLudoDice1.sides}")
+# print()
 
 # print("Ejercicio 5.")
-# # Creamos tres dados de parchís y tiramos los dados para ver que funcionan.
-# Ludo_Dice1 = LudoDice()
-# Ludo_Dice2 = LudoDice()
-# Ludo_Dice3 = LudoDice()
+# Creamos tres dados de parchís y tiramos los dados para ver que funcionan.
+Ludo_Dice1 = LudoDice()
+Ludo_Dice2 = LudoDice()
+Ludo_Dice3 = LudoDice()
 # Ludo_Dice4 = LudoDice()
-# print(f"Dado parchís 1: {Ludo_Dice1.roll()}.")
-# print(f"Dado parchís 2: {Ludo_Dice2.roll()}.")
-# print(f"Dado parchís 3: {Ludo_Dice3.roll()}.")
+print(f"Dado parchís 1: {Ludo_Dice1.roll()}.")
+print(f"Dado parchís 2: {Ludo_Dice2.roll()}.")
+print(f"Dado parchís 3: {Ludo_Dice3.roll()}.")
 # print(f"Dado parchís 4: {Ludo_Dice4.roll()}.")
-# # Creamos el cubilete de dados.
-# DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
-# print(DiceCup1)
-# # Mostramos los dados que tenemos en el cubilete.
+# Creamos el cubilete de dados.
+DiceCup1 = DiceCup(Ludo_Dice1, Ludo_Dice2, Ludo_Dice3)
+print(DiceCup1)
+# Mostramos los dados que tenemos en el cubilete.
 # print(f"En el cubilete tenemos los siguientes dados: {DiceCup1.dices}.")
 # print(f"Hay {DiceCup1.size} dados en el cubilete.")
 # DiceCup1.add(Ludo_Dice4)
@@ -252,8 +248,8 @@ print()
 # print(DiceCup1)
 # print()
 
-# print("Ejercicio 6")
-# # Realizamos la suma del contenido del cubilete de dados.
-# pkc = PokerDiceCup(DiceCup1)
-# score = pkc.score
-# print(score)
+print("Ejercicio 6")
+# Realizamos la suma del contenido del cubilete de dados.
+pkc = PokerDiceCup(DiceCup1)
+score = pkc.score
+print(score)
