@@ -157,15 +157,7 @@ class PokerDiceCup(DiceCup):
     def __init__(self, *dices):
         super().__init__(*dices)
 
-    # @property
-    # def score(self):
-    #     total = 0
-    #     for dice in len(list):
-    #         total += dice._dices
-    #     return total
-
     def score(self):
-        # total = sum(list)
         return sum(self.dices)
     
 # # Pruebas
