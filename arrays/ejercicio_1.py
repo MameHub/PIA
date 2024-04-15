@@ -16,15 +16,7 @@ for i in range(20):
 square = [n**2 for n in number]
 cube = [n**3 for n in number]
 
-for i in range(len(number)):
-    print(number[i], end=',')
+columns = zip(number, square, cube)
 
-print()
-
-for i in range(len(square)):
-    print(square[i], end=',')
-
-print()
-
-for i in range(len(cube)):
-    print(cube[i], end=',')
+for num in columns:
+    print(f"{num[0]}\t{num[1]}\t{num[2]}")
